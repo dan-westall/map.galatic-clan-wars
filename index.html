@@ -1,0 +1,113 @@
+<html ng-app="mapGCW">
+<head>
+    <link href="public/css/app.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body ng-controller="mapDisplay">
+
+        <script type="application/javascript">
+
+            var screenWidth = 1500;
+            var screenHeight = 800;
+
+            function getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function makeArrayOf(value, length) {
+                var arr = [], i = length;
+                while (i--) {
+                    arr[i] = value;
+                }
+                return arr;
+            }
+
+            var solarSystem = [
+                {
+                    systemName: 'Map 1',
+                    systemSharingLink: '',
+                    css: {
+                        position: {
+                            x: getRandomArbitrary(50,screenHeight).toFixed(2),
+                            y: getRandomArbitrary(50,screenWidth).toFixed(2)
+                        }
+                    },
+                    elementID: '',
+                    gameState: {
+                        state: '',
+                        owner: 'exodus'
+                    }
+                },
+            ];
+
+            for (i = 0; i < 20; i++) {
+                solarSystem.push(
+                    {
+                        systemName: 'Map ' + getRandomArbitrary(50,100).toFixed(0),
+                        systemSharingLink: '',
+                        systemPlanets: {
+                            lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                            moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                            jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                            ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                            gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+                        },
+                        css: {
+                            position: {
+                                x: getRandomArbitrary(50,screenHeight).toFixed(2),
+                                y: getRandomArbitrary(50,screenWidth).toFixed(2)
+                            }
+                        },
+                        elementID: '',
+                        gameState: {
+                            state: '',
+                            owner: ''
+                        }
+                    }
+                );
+
+            }
+
+            var clans = [
+                {
+                    slug: 'exodus',
+                    name: 'exodus',
+                    color: 'color-yellow'
+                }
+            ];
+
+
+        </script>
+
+        <div id="map">
+
+            <div class="system-container {{map.gameState.owner}}"  ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
+
+                <div class="system-point-hover-container">
+                    <div class="system-point-hover">
+
+                        <div class="system-point">
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="system-info">
+                    <h2>{{map.systemName}}</h2>
+
+                    <ul ng-repeat="(type, number) in map.systemPlanets" class="planet {{type}} number-{{number.length}}">
+                        <li ng-repeat="planet in number track by $index"></li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <script src="public/js/app.min.js"></script>
+        <script src="//localhost:35729/livereload.js"></script>
+</body>
+</html>

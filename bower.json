@@ -1,0 +1,33 @@
+{
+  "name": "citizen-me-2014",
+  "version": "0.0.0",
+  "authors": [
+    "Dan Westall <dwestall@webmatics.co.uk>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lesshat": "~3.0.2",
+    "jquery": "~2.1.1",
+    "normalize.css": "~3.0.1",
+    "jquery-cycle2": "~2.1.5",
+    "lodash": "~2.4.1",
+    "angular-data": "~1.2.1",
+    "angular-flash": "~0.1.13",
+    "angular-ui-router": "~0.2.11",
+    "angular-bootstrap": "~0.11.2",
+    "ngSanitize": "~0.0.2",
+    "angular-sanitize": "~1.3.2",
+    "ng-chartistjs": "~2.0.0"
+  },
+  "resolutions": {
+    "angular": ">=1"
+  }
+}
