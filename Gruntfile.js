@@ -42,6 +42,7 @@ module.exports = function (grunt) {
                     'bower_components/jquery/dist/jquery.min.js',
                     'bower_components/angular/angular.min.js',
                     'bower_components/lodash/dist/lodash.min.js',
+                    'bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.7.2-min.js',
                     'assets/js/app.js'
                 ],
                 dest: 'tmp/app.js'
@@ -88,7 +89,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: [
-                    'public/js/*.js'
+                    'assets/js/*.js'
                 ],
                 tasks: ['concat', 'uglify:build'],
                 options: {

@@ -42,7 +42,7 @@
                             y: 400
                         }
                     },
-                    elementID: '',
+                    elementID: 'map-1',
                     gameState: {
                         state: '',
                         owner: 'exodus',
@@ -66,7 +66,7 @@
                             y: 800
                         }
                     },
-                    elementID: '',
+                    elementID: 'map-2',
                     gameState: {
                         state: '',
                         owner: '',
@@ -90,10 +90,10 @@
                             y: 1200
                         }
                     },
-                    elementID: '',
+                    elementID: 'map-3',
                     gameState: {
                         state: '',
-                        owner: 'The Realm',
+                        owner: 'rlm',
                         isHome: true,
                         isContested: false
                     }
@@ -114,7 +114,7 @@
                             y: 464
                         }
                     },
-                    elementID: '',
+                    elementID: 'map-4',
                     gameState: {
                         state: '',
                         owner: '',
@@ -162,12 +162,35 @@
                 }
             ];
 
+            var systemConnections = [
+                {
+                    from: 'map-1',
+                    to: 'map-2'
+                },
+                {
+                    from: 'map-1',
+                    to: 'map-4'
+                },
+                {
+                    from: 'map-2',
+                    to: 'map-3'
+                },
+                {
+                    from: 'map-4',
+                    to: 'map-3'
+                },
+                {
+                    from: 'map-4',
+                    to: 'map-2'
+                }
+            ];
+
 
         </script>
 
         <div id="map">
 
-            <div class="system-container {{map.gameState.owner}}" ng-class="{ 'is-home': map.gameState.isHome }" ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
+            <div class="system-container {{map.gameState.owner}}" ng-class="{ 'is-home': map.gameState.isHome }" ng-repeat="map in maps" id="{{map.elementID}}" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
 
                 <ul class="system-state">
                     <li ng-if="map.gameState.isHome">
@@ -234,7 +257,7 @@
             {{map | json}}
         </div>
 
-
+        <div ng-init="init()"></div>
         <script src="public/js/app.min.js"></script>
         <script src="//localhost:35729/livereload.js"></script>
 </body>
