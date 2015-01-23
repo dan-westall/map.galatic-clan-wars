@@ -56,45 +56,125 @@
 
 //#00aef2
 
+.system-container {
+
+
+
+        &.exodus {
+            .system-state .fa-home {
+
+                color: @yellow;
+            }
+
+            .system-point-hover-container .system-point:before {
+                border-color: @yellow;
+            }
+        }
+
+
+}
+
+
 body {
     background-color: #111;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #map {
     position: relative;
 }
 
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .system-container {
     position: absolute;
-    perspective: 1000;
+    perspective: 2000;
 
-    .system-point {
-        border-radius: 50%;
-        height: @starSize;
-        width: @starSize;
-        background-color: @starColor;
-        margin: 40px;
-    }
+    .system-state {
+        padding: 0px;
+        margin: 0px;
+        transition: 2s;
+        position: absolute;
+        top: 0px;
+        left: 40px;
+        i {
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            color: #fff;
+            left: 35px;
+        }
 
-    &.exodus {
-        .system-point {
-            border: 6px solid @yellow;
+        .fa-bolt {
+            -webkit-animation: blink 1s linear  infinite normal;
+            color: @googleRed;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
         }
     }
 
-    .system-point-hover-container {
-        width: 90px;
-        height: 90px;
+    &:hover {
+        .system-state {
+            -webkit-animation: moveState 1s normal forwards ease-in-out;
+        }
     }
-    .system-point-hover {
-//        transition: 0.5s;
-        border: 1px solid transparent;
-        border-right-width: 1px;
-        border-left-width: 1px;
-        border-color: transparent;
-        opacity: 1;
-        border-radius: 50%;
+
+    .ownership-info {
+
+    }
+
+    .system-point-hover-container {
+
+        @Size: 90px;
+
+        width: @Size;
+        height: @Size;
+        position: relative;
+
+        .system-point-hover {
+            //        transition: 0.5s;
+            border: 1px solid transparent;
+            border-right-width: 1px;
+            border-left-width: 1px;
+            border-color: transparent;
+            opacity: 1;
+            border-radius: 50%;
+            width: @Size - 2;
+            height: @Size - 2;
+        }
+
+        .system-point {
+            border-radius: 50%;
+            height: @starSize;
+            width: @starSize;
+            background-color: @starColor;
+            position: absolute;
+            top: ( ( @Size / 2 ) - ( @starSize / 2) );
+            left: ( ( @Size / 2 ) - ( @starSize / 2) );
+
+            &:before {
+                content: ' ';
+
+                border-radius: 50%;
+                position: absolute;
+                height: @starSize+4;
+                width: @starSize+4;
+                display: block;
+                top: -5px;
+                left: -5px;
+                border: 3px solid transparent;
+            }
+
+        }
+
+
     }
 
     .system-info {
@@ -167,6 +247,8 @@ body {
     }
 
     &:hover {
+
+        z-index: 1000;
         .system-point-hover {
             border-right: 1px solid #00aef2;border-left: 1px solid #00aef2;
             -webkit-animation: myfirst 4s linear  infinite normal;
@@ -193,3 +275,21 @@ body {
 
     100% {border-bottom: 1px solid transparent;border-top: 1px solid transparent;transform: rotate(360deg);}
 }
+
+
+/* Standard syntax */
+@-webkit-keyframes blink {
+
+    50% {opacity: 1}
+
+    100% {opacity: 0}
+}
+/* Standard syntax */
+@-webkit-keyframes moveState {
+
+    80% {}
+    90% {left: 40px;top: -60px;}
+    100% {left: 60px;top: -60px;}
+}
+
+

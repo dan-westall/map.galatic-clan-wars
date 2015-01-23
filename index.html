@@ -1,7 +1,10 @@
 <html ng-app="mapGCW">
 <head>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:900,300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="public/css/app.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body ng-controller="mapDisplay">
 
@@ -35,7 +38,9 @@
                     elementID: '',
                     gameState: {
                         state: '',
-                        owner: 'exodus'
+                        owner: 'exodus',
+                        isHome: true,
+                        isContested: false
                     }
                 },
             ];
@@ -61,7 +66,9 @@
                         elementID: '',
                         gameState: {
                             state: '',
-                            owner: ''
+                            owner: '',
+                            isHome: false,
+                            isContested: true
                         }
                     }
                 );
@@ -81,29 +88,71 @@
 
         <div id="map">
 
-            <div class="system-container {{map.gameState.owner}}"  ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
+            <div class="system-container {{map.gameState.owner}}" ng-class="{ 'is-home':  }" ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
+
+                <ul class="system-state">
+                    <li ng-if="map.gameState.isHome">
+                        <i class="fa fa-home"></i>
+                    </li>
+
+                    <li ng-if="map.gameState.isContested">
+                        <i class="fa fa-bolt"></i>
+                    </li>
+
+                </ul>
 
                 <div class="system-point-hover-container">
+
                     <div class="system-point-hover">
 
-                        <div class="system-point">
+                    </div>
+
+                    <div class="system-point">
+
+                    </div>
+
+                </div>
+
+                <div class="system-info">
+
+                    <div class="group">
+
+                        <div class="system-info-name-container">
+
+                            <h2>{{map.systemName}}</h2>
+
+                        </div>
+
+                        <div class="system-info-planet-container">
+
+                            <ul ng-repeat="(type, number) in map.systemPlanets" class="planet {{type}} number-{{number.length}}">
+                                <li ng-repeat="planet in number track by $index"></li>
+                            </ul>
+                        </div>
+
+
+
+                        <div ng-if="map.gameState.owner">
+
+                            <div class="ownership-info">
+
+                                {{map.gameState.owner}}
+
+                            </div>
 
                         </div>
 
                     </div>
-                </div>
 
-                <div class="system-info">
-                    <h2>{{map.systemName}}</h2>
-
-                    <ul ng-repeat="(type, number) in map.systemPlanets" class="planet {{type}} number-{{number.length}}">
-                        <li ng-repeat="planet in number track by $index"></li>
-                    </ul>
                 </div>
 
             </div>
 
 
+        </div>
+
+        <div>
+            {{map | json}}
         </div>
 
 

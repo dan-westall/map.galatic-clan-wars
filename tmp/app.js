@@ -321,4 +321,8 @@ mapGCW.controller('mapDisplay', [ '$scope', '$http', 'mapData' ,function($scope,
     // $scope will allow this to pass between controller and view
     $scope.maps = mapData;
 
+    $scope.getTimes=function(n){
+        return new Array(n);
+    };
+
 }]);
