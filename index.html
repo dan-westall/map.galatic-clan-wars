@@ -29,10 +29,17 @@
                 {
                     systemName: 'Map 1',
                     systemSharingLink: '',
+                    systemPlanets: {
+                        lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+                    },
                     css: {
                         position: {
-                            x: getRandomArbitrary(50,screenHeight).toFixed(2),
-                            y: getRandomArbitrary(50,screenWidth).toFixed(2)
+                            x: 150,
+                            y: 400
                         }
                     },
                     elementID: '',
@@ -43,37 +50,109 @@
                         isContested: false
                     }
                 },
+                {
+                    systemName: 'Map 2',
+                    systemSharingLink: '',
+                    systemPlanets: {
+                        lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+                    },
+                    css: {
+                        position: {
+                            x: 700,
+                            y: 800
+                        }
+                    },
+                    elementID: '',
+                    gameState: {
+                        state: '',
+                        owner: '',
+                        isHome: false,
+                        isContested: false
+                    }
+                },
+                {
+                    systemName: 'Map 3',
+                    systemSharingLink: '',
+                    systemPlanets: {
+                        lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+                    },
+                    css: {
+                        position: {
+                            x: 800,
+                            y: 1200
+                        }
+                    },
+                    elementID: '',
+                    gameState: {
+                        state: '',
+                        owner: 'The Realm',
+                        isHome: true,
+                        isContested: false
+                    }
+                },
+                {
+                    systemName: 'Map 4',
+                    systemSharingLink: '',
+                    systemPlanets: {
+                        lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+                        gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+                    },
+                    css: {
+                        position: {
+                            x: 754,
+                            y: 464
+                        }
+                    },
+                    elementID: '',
+                    gameState: {
+                        state: '',
+                        owner: '',
+                        isHome: false,
+                        isContested: true
+                    }
+                },
             ];
 
-            for (i = 0; i < 20; i++) {
-                solarSystem.push(
-                    {
-                        systemName: 'Map ' + getRandomArbitrary(50,100).toFixed(0),
-                        systemSharingLink: '',
-                        systemPlanets: {
-                            lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
-                            moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
-                            jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
-                            ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
-                            gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
-                        },
-                        css: {
-                            position: {
-                                x: getRandomArbitrary(50,screenHeight).toFixed(2),
-                                y: getRandomArbitrary(50,screenWidth).toFixed(2)
-                            }
-                        },
-                        elementID: '',
-                        gameState: {
-                            state: '',
-                            owner: '',
-                            isHome: false,
-                            isContested: true
-                        }
-                    }
-                );
-
-            }
+//            for (i = 0; i < 20; i++) {
+//                solarSystem.push(
+//                    {
+//                        systemName: 'Map ' + getRandomArbitrary(50,100).toFixed(0),
+//                        systemSharingLink: '',
+//                        systemPlanets: {
+//                            lava: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+//                            moon: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+//                            jungle: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+//                            ice: makeArrayOf(0,getRandomArbitrary(0,2).toFixed(0)),
+//                            gas:  makeArrayOf(0,getRandomArbitrary(0,1).toFixed(0))
+//                        },
+//                        css: {
+//                            position: {
+//                                x: getRandomArbitrary(50,screenHeight).toFixed(2),
+//                                y: getRandomArbitrary(50,screenWidth).toFixed(2)
+//                            }
+//                        },
+//                        elementID: '',
+//                        gameState: {
+//                            state: '',
+//                            owner: '',
+//                            isHome: false,
+//                            isContested: true
+//                        }
+//                    }
+//                );
+//
+//            }
 
             var clans = [
                 {
@@ -88,7 +167,7 @@
 
         <div id="map">
 
-            <div class="system-container {{map.gameState.owner}}" ng-class="{ 'is-home':  }" ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
+            <div class="system-container {{map.gameState.owner}}" ng-class="{ 'is-home': map.gameState.isHome }" ng-repeat="map in maps" style="top: {{ map.css.position.x }}px; left:{{ map.css.position.y }}px">
 
                 <ul class="system-state">
                     <li ng-if="map.gameState.isHome">
