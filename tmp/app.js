@@ -365,7 +365,7 @@ mapGCW.controller('mapDisplay', [ '$scope', '$http', 'mapData', 'mapConnections'
                     anchors: ["Center", "Center"],
                     endpoint: "Blank",
                     endpointStyle: {fillStyle: "yellow"},
-                    connector: [ "Flowchart", { gap: [20, 20] } ]
+                    connector: [ "Straight", { gap: [20, 20] } ]
                 });
 
             });
